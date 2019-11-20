@@ -1,7 +1,9 @@
 from flask import Flask,render_template,url_for,request
 from sklearn.externals import joblib
+import pickle
 import requests
 from bs4 import BeautifulSoup
+import os
 
 app = Flask(__name__)
 
@@ -13,8 +15,9 @@ def home():
 # Creating the predicts page
 @app.route('/predict',methods=['POST'])
 def predict():
+    path = os.path.dirname(os.path.abspath(__file__))
     # Loading the trained model
-    clf = joblib.load('Naive Bayes Buzzfeed Classifier.pkl')
+    clf = joblib.load(path + '/Naive Bayes Buzzfeed Classifier.pkl')
 
     # Predicting the input
     if request.method == 'POST':
