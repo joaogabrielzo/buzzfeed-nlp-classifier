@@ -20,3 +20,8 @@ After the image is built, run:
 ```bash
 docker run -d --network="host" buzzfeed
 ```
+
+To access the webapp, go to
+```bash
+localhost:5000
+```
